@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.msdn.generator.common.mybatis.config.MybatisAutoConfiguration,\
+   com.msdn.generator.common.mybatisPlus.config.MybatisPlusAutoConfiguration
