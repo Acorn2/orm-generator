@@ -10,9 +10,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 public class ${pascalName}QueryPageDTO extends MbpPage<${pascalName}>{
 
 }
