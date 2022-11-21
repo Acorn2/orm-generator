@@ -16,7 +16,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ${pascalName}ServiceImpl extends ServiceImpl<${pascalName}Mapper, ${pascalName}> implements ${pascalName}Service {
+public class ${pascalName}ServiceImpl extends
+    ServiceImpl<${pascalName}Mapper, ${pascalName}> implements ${pascalName}Service {
 
   private final ${pascalName}Struct ${camelName}Struct;
 

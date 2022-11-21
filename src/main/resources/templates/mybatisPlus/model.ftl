@@ -1,9 +1,9 @@
 package ${package}.model;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.msdn.mall.common.model.CoreBase;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,20 +12,19 @@ import lombok.experimental.SuperBuilder;
 
 
 /**
-*
-${tableComment}
-*
-* @author ${author}
-* @since ${date}
+ *${tableComment}.
+ *
+ * @author ${author}
+ * @since ${date}
 */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("${tableName}")
-@Schema(name="${tableName}对象", description="${tableComment}")
+@Schema(name = "${tableName}对象", description = "${tableComment}")
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class ${pascalName} extends CoreBase{
+public class ${pascalName} extends CoreBase {
 
   private static final long serialVersionUID = 1L;
 

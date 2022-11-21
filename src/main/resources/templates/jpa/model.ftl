@@ -7,20 +7,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 /**
-*
-   ${tableComment}
-*
-* @author ${author}
-* @since ${date}
-*/
+ *${tableComment}.
+ *
+ * @author ${author}
+ * @since ${date}
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity(name = "${camelName}")
-@Schema(name="${tableName}对象", description="${tableComment}")
+@Schema(name = "${tableName}对象", description = "${tableComment}")
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class ${pascalName} extends BaseDomain{
+public class ${pascalName} extends BaseDomain {
 
     private static final long serialVersionUID = 1L;
 

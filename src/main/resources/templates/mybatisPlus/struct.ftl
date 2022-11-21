@@ -1,15 +1,14 @@
 package ${package}.struct;
 
-import ${package}.model.${pascalName};
 import ${package}.dto.${pascalName}DTO;
+import ${package}.model.${pascalName};
 import ${package}.vo.${pascalName}VO;
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 import java.util.List;
+import org.mapstruct.Mapper;
 
 /**
-* ${tableComment}转换类
-*/
+ * ${tableComment}转换类.
+ */
 @Mapper(componentModel = "spring")
 public interface ${pascalName}Struct {
 

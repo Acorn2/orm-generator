@@ -8,8 +8,8 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 /**
-  * ${tableComment}转换类
-  */
+ * ${tableComment}转换类.
+ */
 @Mapper(componentModel = "spring")
 public interface ${pascalName}Struct {
 

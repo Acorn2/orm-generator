@@ -7,22 +7,21 @@ import javax.persistence.Column;
 import javax.persistence.Table;
 
 /**
-*
-   ${tableComment}
-*
-* @author ${author}
-* @since ${date}
-*/
+ *${tableComment}
+ *
+ * @author ${author}
+ * @since ${date}
+ */
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Table(name = "${tableName}")
-@Schema(name="${tableName}对象", description="${tableComment}")
+@Schema(name = "${tableName}对象", description = "${tableComment}")
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class ${pascalName} extends BaseEntity{
+public class ${pascalName} extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
 <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list columns as column>

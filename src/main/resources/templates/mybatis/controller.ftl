@@ -7,10 +7,17 @@ import ${package}.service.${pascalName}Service;
 import ${package}.vo.${pascalName}VO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Tag(name = "${tableComment}")
@@ -46,7 +53,7 @@ public class ${pascalName}Controller {
   public Result<Object> add(@RequestBody ${pascalName}DTO dto) {
     int count = ${camelName}Service.add(dto);
     if (count < 1) {
-        return Result.failed();
+      return Result.failed();
     }
     return Result.ok();
   }
@@ -56,7 +63,7 @@ public class ${pascalName}Controller {
   public Result<Object> edit(@RequestBody ${pascalName}DTO dto) {
     int count = ${camelName}Service.edit(dto);
     if (count < 1) {
-        return Result.failed();
+      return Result.failed();
     }
     return Result.ok();
   }
@@ -66,7 +73,7 @@ public class ${pascalName}Controller {
   public Result<Object> delete(@RequestParam String id) {
     int count = ${camelName}Service.delete(id);
     if (count < 1) {
-        return Result.failed();
+      return Result.failed();
     }
     return Result.ok();
   }

@@ -1,7 +1,7 @@
 package ${package}.mapper;
 
-import ${package}.model.${pascalName};
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import ${package}.model.${pascalName};
 import org.springframework.stereotype.Repository;
 
 @Repository

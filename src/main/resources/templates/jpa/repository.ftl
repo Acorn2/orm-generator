@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ${pascalName}Repository extends JpaRepository<${pascalName}, Long>, JpaSpecificationExecutor<${pascalName}> {
+public interface ${pascalName}Repository extends JpaRepository<${pascalName}, Long>,
+    JpaSpecificationExecutor<${pascalName}> {
 
 }

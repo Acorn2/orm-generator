@@ -14,7 +14,7 @@ import lombok.Setter;
 public class ${pascalName}DTO {
 
 <#list columns as column>
-	@Schema(name = "${column.comment}")
+  @Schema(name = "${column.comment}")
 	private ${column.javaType} ${column.camelName};
 
 </#list>
