@@ -26,7 +26,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 public class ${pascalName} extends CoreBase {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list columns as column>
@@ -34,12 +34,12 @@ public class ${pascalName} extends CoreBase {
 <#--    @TableId(value = "${column.fieldName}", type = IdType.${column.primaryKeyType})-->
   <#else>
   <#if !column.isCommonField>
-  @TableField("${column.fieldName}")
+    @TableField("${column.fieldName}")
   </#if>
   </#if>
   <#if !column.isCommonField>
-  @Schema(name = "${column.comment}")
-  private ${column.javaType} ${column.camelName};
+    @Schema(name = "${column.comment}")
+    private ${column.javaType} ${column.camelName};
 
   </#if>
 </#list>

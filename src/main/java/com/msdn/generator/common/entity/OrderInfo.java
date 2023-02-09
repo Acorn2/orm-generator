@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 public class OrderInfo {
 
-  private boolean asc = true;
+    private boolean asc = true;
 
-  private String column;
+    private String column;
 }

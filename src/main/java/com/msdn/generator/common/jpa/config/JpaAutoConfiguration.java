@@ -16,14 +16,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Configuration
 public class JpaAutoConfiguration implements AuditorAware<String> {
 
-  @Override
-  public Optional<String> getCurrentAuditor() {
-    SecurityContext ctx = SecurityContextHolder.getContext();
-    Object principal = ctx.getAuthentication().getPrincipal();
-    if (principal.getClass().isAssignableFrom(String.class)) {
-      return Optional.of((String) principal);
-    } else {
-      return null;
+    @Override
+    public Optional<String> getCurrentAuditor() {
+        SecurityContext ctx = SecurityContextHolder.getContext();
+        Object principal = ctx.getAuthentication().getPrincipal();
+        if (principal.getClass().isAssignableFrom(String.class)) {
+            return Optional.of((String) principal);
+        } else {
+            return null;
+        }
     }
-  }
 }

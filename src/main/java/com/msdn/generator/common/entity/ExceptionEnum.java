@@ -3,8 +3,7 @@ package com.msdn.generator.common.entity;
 /**
  * @author hresh
  * @博客 https://juejin.cn/user/2664871918047063
- * @网站 https://www.hreshhao.com/
- * 枚举了一些常用API操作码
+ * @网站 https://www.hreshhao.com/ 枚举了一些常用API操作码
  */
 public enum ExceptionEnum implements IError {
     // 数据操作状态码和提示信息定义

@@ -14,6 +14,6 @@ import lombok.Setter;
 @Builder
 public class ${pascalName}QueryPageDTO {
 
-  @JsonUnwrapped
-  private PageSortInfo pageSortInfo;
+    @JsonUnwrapped
+    private PageSortInfo pageSortInfo;
 }

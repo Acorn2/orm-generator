@@ -20,13 +20,13 @@ import org.springframework.context.annotation.Bean;
 @ConditionalOnBean({com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration.class})
 public class MybatisPlusAutoConfiguration {
 
-  public MybatisPlusAutoConfiguration() {
-  }
+    public MybatisPlusAutoConfiguration() {
+    }
 
-  @Bean
-  public MetaObjectHandler metaObjectHandler() {
-    return new MybatisPlusAutoConfiguration.FillFieldConfiguration();
-  }
+    @Bean
+    public MetaObjectHandler metaObjectHandler() {
+        return new MybatisPlusAutoConfiguration.FillFieldConfiguration();
+    }
 
 //    @Bean
 //    public PaginationInterceptor paginationInterceptor() {
@@ -38,48 +38,48 @@ public class MybatisPlusAutoConfiguration {
 //        return paginationInterceptor;
 //    }
 
-  public static class FillFieldConfiguration implements MetaObjectHandler {
+    public static class FillFieldConfiguration implements MetaObjectHandler {
 
-    public FillFieldConfiguration() {
-    }
+        public FillFieldConfiguration() {
+        }
 
-    @Override
-    public void insertFill(MetaObject metaObject) {
-      DateTime now = DateUtil.date();
-      metaObject.setValue("createUserCode", "1");
-      metaObject.setValue("createUserName", "admin");
-      metaObject.setValue("createDate", now);
-      metaObject.setValue("lastModifiedCode", "1");
-      metaObject.setValue("lastModifiedName", "admin");
-      metaObject.setValue("lastModifiedDate", now);
-      // 其它公共字段
+        @Override
+        public void insertFill(MetaObject metaObject) {
+            DateTime now = DateUtil.date();
+            metaObject.setValue("createUserCode", "1");
+            metaObject.setValue("createUserName", "admin");
+            metaObject.setValue("createDate", now);
+            metaObject.setValue("lastModifiedCode", "1");
+            metaObject.setValue("lastModifiedName", "admin");
+            metaObject.setValue("lastModifiedDate", now);
+            // 其它公共字段
 //            this.strictInsertFill(metaObject, "orgId", String.class, "xxx");
 //            this.strictInsertFill(metaObject, "platformId", String.class, "xxx");
+        }
+
+        @Override
+        public void updateFill(MetaObject metaObject) {
+            DateTime now = DateUtil.date();
+            metaObject.setValue("lastModifiedCode", "1");
+            metaObject.setValue("lastModifiedName", "admin");
+            metaObject.setValue("lastModifiedDate", now);
+        }
     }
 
-    @Override
-    public void updateFill(MetaObject metaObject) {
-      DateTime now = DateUtil.date();
-      metaObject.setValue("lastModifiedCode", "1");
-      metaObject.setValue("lastModifiedName", "admin");
-      metaObject.setValue("lastModifiedDate", now);
+    /**
+     * 分页插件
+     *
+     * @return
+     */
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
+        PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor(
+                DbType.MYSQL);
+        // 设置最大单页限制数量，默认 500 条，-1 不受限制
+        paginationInnerInterceptor.setMaxLimit(500L);
+        mybatisPlusInterceptor.addInnerInterceptor(paginationInnerInterceptor);
+
+        return mybatisPlusInterceptor;
     }
-  }
-
-  /**
-   * 分页插件
-   *
-   * @return
-   */
-  @Bean
-  public MybatisPlusInterceptor mybatisPlusInterceptor() {
-    MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
-    PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor(
-        DbType.MYSQL);
-    // 设置最大单页限制数量，默认 500 条，-1 不受限制
-    paginationInnerInterceptor.setMaxLimit(500L);
-    mybatisPlusInterceptor.addInnerInterceptor(paginationInnerInterceptor);
-
-    return mybatisPlusInterceptor;
-  }
 }

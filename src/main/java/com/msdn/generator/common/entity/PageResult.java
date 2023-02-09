@@ -21,77 +21,77 @@ import java.util.List;
 @Setter
 public class PageResult<T> {
 
-  /**
-   * 总条数
-   */
-  private Long total;
-  /**
-   * 总页数
-   */
-  private Integer pageCount;
-  /**
-   * 每页数量
-   */
-  private Integer pageSize;
-  /**
-   * 当前页码
-   */
-  private Integer pageNum;
+    /**
+     * 总条数
+     */
+    private Long total;
+    /**
+     * 总页数
+     */
+    private Integer pageCount;
+    /**
+     * 每页数量
+     */
+    private Integer pageSize;
+    /**
+     * 当前页码
+     */
+    private Integer pageNum;
 
-  /**
-   * 分页数据
-   */
-  private List<T> data;
+    /**
+     * 分页数据
+     */
+    private List<T> data;
 
-  /**
-   * 处理Mybatis分页结果
-   */
-  public static <T> PageResult<T> ok(Page<T> page) {
-    PageResult<T> result = new PageResult<T>();
-    result.setPageCount(page.getPages());
-    result.setPageNum(page.getPageNum());
-    result.setPageSize(page.getPageSize());
-    result.setTotal(page.getTotal());
-    result.setData(page.getResult());
-    return result;
-  }
+    /**
+     * 处理Mybatis分页结果
+     */
+    public static <T> PageResult<T> ok(Page<T> page) {
+        PageResult<T> result = new PageResult<T>();
+        result.setPageCount(page.getPages());
+        result.setPageNum(page.getPageNum());
+        result.setPageSize(page.getPageSize());
+        result.setTotal(page.getTotal());
+        result.setData(page.getResult());
+        return result;
+    }
 
-  /**
-   * 处理Mybatis分页结果
-   */
-  public static <T> PageResult<T> ok(PageInfo<T> pageInfo) {
-    PageResult<T> result = new PageResult<T>();
-    result.setPageCount(pageInfo.getPages());
-    result.setPageNum(pageInfo.getPageNum());
-    result.setPageSize(pageInfo.getSize());
-    result.setTotal(pageInfo.getTotal());
-    result.setData(pageInfo.getList());
-    return result;
-  }
+    /**
+     * 处理Mybatis分页结果
+     */
+    public static <T> PageResult<T> ok(PageInfo<T> pageInfo) {
+        PageResult<T> result = new PageResult<T>();
+        result.setPageCount(pageInfo.getPages());
+        result.setPageNum(pageInfo.getPageNum());
+        result.setPageSize(pageInfo.getSize());
+        result.setTotal(pageInfo.getTotal());
+        result.setData(pageInfo.getList());
+        return result;
+    }
 
-  /**
-   * 处理Mybatis Plus分页结果
-   */
-  public static <T> PageResult<T> ok(IPage<T> iPage) {
-    PageResult<T> result = new PageResult<T>();
-    result.setPageCount((int) iPage.getPages());
-    result.setPageNum((int) iPage.getCurrent());
-    result.setPageSize((int) iPage.getSize());
-    result.setTotal(iPage.getTotal());
-    result.setData(iPage.getRecords());
-    return result;
-  }
+    /**
+     * 处理Mybatis Plus分页结果
+     */
+    public static <T> PageResult<T> ok(IPage<T> iPage) {
+        PageResult<T> result = new PageResult<T>();
+        result.setPageCount((int) iPage.getPages());
+        result.setPageNum((int) iPage.getCurrent());
+        result.setPageSize((int) iPage.getSize());
+        result.setTotal(iPage.getTotal());
+        result.setData(iPage.getRecords());
+        return result;
+    }
 
-  /**
-   * 处理Jpa分页结果，Jpa页码默认从0开始，所以返回结果加1
-   */
-  public static <T> PageResult<T> ok(org.springframework.data.domain.Page<T> page) {
-    PageResult<T> result = new PageResult<T>();
-    result.setPageCount(page.getTotalPages());
-    result.setPageNum(page.getNumber() + 1);
-    result.setPageSize(page.getSize());
-    result.setTotal(page.getTotalElements());
-    result.setData(page.getContent());
-    return result;
-  }
+    /**
+     * 处理Jpa分页结果，Jpa页码默认从0开始，所以返回结果加1
+     */
+    public static <T> PageResult<T> ok(org.springframework.data.domain.Page<T> page) {
+        PageResult<T> result = new PageResult<T>();
+        result.setPageCount(page.getTotalPages());
+        result.setPageNum(page.getNumber() + 1);
+        result.setPageSize(page.getSize());
+        result.setTotal(page.getTotalElements());
+        result.setData(page.getContent());
+        return result;
+    }
 }

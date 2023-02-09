@@ -12,19 +12,19 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface ${pascalName}Struct {
 
-  ${pascalName}VO modelToVO(${pascalName} record);
+    ${pascalName}VO modelToVO(${pascalName} record);
 
-  List<${pascalName}VO> modelToVO(List<${pascalName}> records);
+    List<${pascalName}VO> modelToVO(List<${pascalName}> records);
 
-  ${pascalName} voToModel(${pascalName}VO record);
+    ${pascalName} voToModel(${pascalName}VO record);
 
-  List<${pascalName}> voToModel(List<${pascalName}VO> records);
+    List<${pascalName}> voToModel(List<${pascalName}VO> records);
 
-  ${pascalName}DTO modelToDTO(${pascalName} record);
+    ${pascalName}DTO modelToDTO(${pascalName} record);
 
-  List<${pascalName}DTO> modelToDTO(List<${pascalName}> records);
+    List<${pascalName}DTO> modelToDTO(List<${pascalName}> records);
 
-  ${pascalName} dtoToModel(${pascalName}DTO record);
+    ${pascalName} dtoToModel(${pascalName}DTO record);
 
-  List<${pascalName}> dtoToModel(List<${pascalName}DTO> records);
+    List<${pascalName}> dtoToModel(List<${pascalName}DTO> records);
 }

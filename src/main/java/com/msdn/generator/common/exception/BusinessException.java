@@ -16,69 +16,69 @@ import lombok.Setter;
 @Setter
 public class BusinessException extends RuntimeException {
 
-  /**
-   * 错误码
-   */
-  private String errorCode;
+    /**
+     * 错误码
+     */
+    private String errorCode;
 
-  /**
-   * 错误描述
-   */
-  private String errorMsg;
+    /**
+     * 错误描述
+     */
+    private String errorMsg;
 
-  public BusinessException() {
-    super();
-  }
+    public BusinessException() {
+        super();
+    }
 
-  public BusinessException(IError error) {
-    super(error.getResultCode());
-    this.errorCode = error.getResultCode();
-    this.errorMsg = error.getResultMsg();
-  }
+    public BusinessException(IError error) {
+        super(error.getResultCode());
+        this.errorCode = error.getResultCode();
+        this.errorMsg = error.getResultMsg();
+    }
 
-  public BusinessException(IError error, Throwable cause) {
-    super(error.getResultCode(), cause);
-    this.errorCode = error.getResultCode();
-    this.errorMsg = error.getResultMsg();
-  }
+    public BusinessException(IError error, Throwable cause) {
+        super(error.getResultCode(), cause);
+        this.errorCode = error.getResultCode();
+        this.errorMsg = error.getResultMsg();
+    }
 
-  public BusinessException(String message) {
-    super(message);
-  }
+    public BusinessException(String message) {
+        super(message);
+    }
 
-  public BusinessException(String errorCode, String errorMsg) {
-    super(errorCode);
-    this.errorCode = errorCode;
-    this.errorMsg = errorMsg;
-  }
+    public BusinessException(String errorCode, String errorMsg) {
+        super(errorCode);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
 
-  public BusinessException(String errorCode, String errorMsg, Throwable cause) {
-    super(errorCode, cause);
-    this.errorCode = errorCode;
-    this.errorMsg = errorMsg;
-  }
+    public BusinessException(String errorCode, String errorMsg, Throwable cause) {
+        super(errorCode, cause);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
 
-  public BusinessException(Throwable cause) {
-    super(cause);
-  }
+    public BusinessException(Throwable cause) {
+        super(cause);
+    }
 
-  public BusinessException(String message, Throwable cause) {
-    super(message, cause);
-  }
+    public BusinessException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-  public static void validateFailed(String message) {
-    throw new BusinessException(ExceptionEnum.VALIDATE_FAILED.getResultCode(), message);
-  }
+    public static void validateFailed(String message) {
+        throw new BusinessException(ExceptionEnum.VALIDATE_FAILED.getResultCode(), message);
+    }
 
-  public static void fail(String message) {
-    throw new BusinessException(message);
-  }
+    public static void fail(String message) {
+        throw new BusinessException(message);
+    }
 
-  public static void fail(IError error) {
-    throw new BusinessException(error);
-  }
+    public static void fail(IError error) {
+        throw new BusinessException(error);
+    }
 
-  public static void fail(String errorCode, String errorMsg) {
-    throw new BusinessException(errorCode, errorMsg);
-  }
+    public static void fail(String errorCode, String errorMsg) {
+        throw new BusinessException(errorCode, errorMsg);
+    }
 }

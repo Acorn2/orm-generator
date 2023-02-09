@@ -10,7 +10,7 @@ import lombok.Setter;
 public class ${pascalName}VO {
 
 <#list columns as column>
-  private ${column.javaType} ${column.camelName};
+    private ${column.javaType} ${column.camelName};
 
 </#list>
 }

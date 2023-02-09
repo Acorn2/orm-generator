@@ -21,16 +21,16 @@ import javax.persistence.Table;
 @SuperBuilder(toBuilder = true)
 public class ${pascalName} extends BaseEntity {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
 <#-- ----------  BEGIN 字段循环遍历  ---------->
 <#list columns as column>
 <#if column.isPrimaryKey>
 </#if>
 <#if !column.isCommonField>
-  @Schema(name = "${column.comment}")
-  @Column(name = "${column.fieldName}")
-  private ${column.javaType} ${column.camelName};
+    @Schema(name = "${column.comment}")
+    @Column(name = "${column.fieldName}")
+    private ${column.javaType} ${column.camelName};
 
 </#if>
 </#list>

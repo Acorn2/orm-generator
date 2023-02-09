@@ -17,29 +17,29 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Reflections {
 
-  private static final Pattern GET_PATTERN = Pattern.compile("^get[A-Z].*");
-  private static final Pattern IS_PATTERN = Pattern.compile("^is[A-Z].*");
+    private static final Pattern GET_PATTERN = Pattern.compile("^get[A-Z].*");
+    private static final Pattern IS_PATTERN = Pattern.compile("^is[A-Z].*");
 
-  private Reflections() {
-  }
-
-  public static String fnToFieldName(IFn fn) {
-    try {
-      Method method = fn.getClass().getDeclaredMethod("writeReplace");
-      method.setAccessible(Boolean.TRUE);
-      SerializedLambda serializedLambda = (SerializedLambda) method.invoke(fn);
-      String getter = serializedLambda.getImplMethodName();
-      if (GET_PATTERN.matcher(getter).matches()) {
-        getter = getter.substring(3);
-      } else if (IS_PATTERN.matcher(getter).matches()) {
-        getter = getter.substring(2);
-      }
-
-      return Introspector.decapitalize(getter);
-    } catch (ReflectiveOperationException e) {
-      log.warn(String.format("%s:%s",
-          Thread.currentThread().getStackTrace()[1].getMethodName(), e.getMessage()), e);
+    private Reflections() {
     }
-    return "";
-  }
+
+    public static String fnToFieldName(IFn fn) {
+        try {
+            Method method = fn.getClass().getDeclaredMethod("writeReplace");
+            method.setAccessible(Boolean.TRUE);
+            SerializedLambda serializedLambda = (SerializedLambda) method.invoke(fn);
+            String getter = serializedLambda.getImplMethodName();
+            if (GET_PATTERN.matcher(getter).matches()) {
+                getter = getter.substring(3);
+            } else if (IS_PATTERN.matcher(getter).matches()) {
+                getter = getter.substring(2);
+            }
+
+            return Introspector.decapitalize(getter);
+        } catch (ReflectiveOperationException e) {
+            log.warn(String.format("%s:%s",
+                    Thread.currentThread().getStackTrace()[1].getMethodName(), e.getMessage()), e);
+        }
+        return "";
+    }
 }

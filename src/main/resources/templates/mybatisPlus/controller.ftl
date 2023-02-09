@@ -28,56 +28,56 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ${pascalName}Controller {
 
-  private final ${pascalName}Service ${camelName}Service;
+    private final ${pascalName}Service ${camelName}Service;
 
-  @GetMapping("/queryPage")
-  @Operation(description = "获取${tableComment}分页列表")
-  public Result<PageResult<${pascalName}VO>> queryPage(@RequestBody ${pascalName}QueryPageDTO dto) {
-    IPage<${pascalName}VO> ${camelName}VOPage = ${camelName}Service.queryPage(dto);
-    return Result.ok(PageResult.ok(${camelName}VOPage));
-  }
-
-  @GetMapping
-  @Operation(description = "获取${tableComment}列表")
-  public Result<List<${pascalName}VO>> queryList(@RequestBody ${pascalName}DTO dto) {
-    List<${pascalName}VO> ${camelName}VOList = ${camelName}Service.queryList(dto);
-    return Result.ok(${camelName}VOList);
-  }
-
-  @GetMapping("/{id}")
-  @Operation(description = "获取${tableComment}详情")
-  public Result<${pascalName}VO> get(@PathVariable("id") Long id) {
-    ${pascalName}VO ${camelName}VO = ${camelName}Service.get(id);
-    return Result.ok(${camelName}VO);
-  }
-
-  @PostMapping
-  @Operation(description = "新增${tableComment}")
-  public Result<Object> add(@RequestBody ${pascalName}DTO dto) {
-    boolean flag = ${camelName}Service.add(dto);
-    if (!flag) {
-      return Result.failed();
+    @GetMapping("/queryPage")
+    @Operation(description = "获取${tableComment}分页列表")
+    public Result<PageResult<${pascalName}VO>> queryPage(@RequestBody ${pascalName}QueryPageDTO dto) {
+      IPage<${pascalName}VO> ${camelName}VOPage = ${camelName}Service.queryPage(dto);
+      return Result.ok(PageResult.ok(${camelName}VOPage));
     }
-    return Result.ok();
-  }
 
-  @PutMapping
-  @Operation(description = "编辑${tableComment}")
-  public Result<Object> edit(@RequestBody ${pascalName}DTO dto) {
-    boolean flag = ${camelName}Service.edit(dto);
-    if (!flag) {
-      return Result.failed();
+    @GetMapping("/list")
+    @Operation(description = "获取${tableComment}列表")
+    public Result<List<${pascalName}VO>> queryList(@RequestBody ${pascalName}DTO dto) {
+      List<${pascalName}VO> ${camelName}VOList = ${camelName}Service.queryList(dto);
+      return Result.ok(${camelName}VOList);
     }
-    return Result.ok();
-  }
 
-  @DeleteMapping
-  @Operation(description = "删除${tableComment}")
-  public Result<Object> delete(@RequestParam String id) {
-    boolean flag = ${camelName}Service.delete(id);
-    if (!flag) {
-      return Result.failed();
+    @GetMapping("/{id}")
+    @Operation(description = "获取${tableComment}详情")
+    public Result<${pascalName}VO> get(@PathVariable("id") Long id) {
+      ${pascalName}VO ${camelName}VO = ${camelName}Service.get(id);
+      return Result.ok(${camelName}VO);
     }
-    return Result.ok();
-  }
+
+    @PostMapping("/add")
+    @Operation(description = "新增${tableComment}")
+    public Result<Object> add(@RequestBody ${pascalName}DTO dto) {
+      boolean flag = ${camelName}Service.add(dto);
+      if (!flag) {
+        return Result.failed();
+      }
+      return Result.ok();
+    }
+
+    @PutMapping("/edit")
+    @Operation(description = "编辑${tableComment}")
+    public Result<Object> edit(@RequestBody ${pascalName}DTO dto) {
+      boolean flag = ${camelName}Service.edit(dto);
+      if (!flag) {
+        return Result.failed();
+      }
+      return Result.ok();
+    }
+
+    @DeleteMapping("/delete")
+    @Operation(description = "删除${tableComment}")
+    public Result<Object> delete(@RequestParam String id) {
+      boolean flag = ${camelName}Service.delete(id);
+      if (!flag) {
+        return Result.failed();
+      }
+      return Result.ok();
+    }
 }

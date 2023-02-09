@@ -18,46 +18,46 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ${pascalName}ServiceImpl implements ${pascalName}Service {
 
-  private final ${pascalName}Repository ${camelName}Repository;
-  private final ${pascalName}Struct ${camelName}Struct;
+    private final ${pascalName}Repository ${camelName}Repository;
+    private final ${pascalName}Struct ${camelName}Struct;
 
-  @Override
-  public Page<${pascalName}VO> queryPage(${pascalName}QueryPageDTO dto) {
-    Pageable pageable = SpecificationBuilder.getPageable(dto.getPageSortInfo());
-    Page<${pascalName}> ${camelName}Page = ${camelName}Repository.findAll(pageable);
-    return ${camelName}Page.map(${camelName} -> ${camelName}Struct.modelToVO(${camelName}));
-  }
-
-  @Override
-  public List<${pascalName}VO> queryList(${pascalName}DTO dto) {
-    List<${pascalName}> ${camelName}s = SpecificationBuilder.create(${pascalName}Repository.class)
-        .select();
-    return ${camelName}Struct.modelToVO(${camelName}s);
-  }
-
-  @Override
-  public ${pascalName}VO get(Long id) {
-    Optional<${pascalName}> ${camelName}Optional = ${camelName}Repository.findById(id);
-        if (${camelName}Optional.isPresent()) {
-        return ${camelName}Struct.modelToVO(${camelName}Optional.get());
+    @Override
+    public Page<${pascalName}VO> queryPage(${pascalName}QueryPageDTO dto) {
+      Pageable pageable = SpecificationBuilder.getPageable(dto.getPageSortInfo());
+      Page<${pascalName}> ${camelName}Page = ${camelName}Repository.findAll(pageable);
+      return ${camelName}Page.map(${camelName} -> ${camelName}Struct.modelToVO(${camelName}));
     }
-    return null;
-  }
 
-  @Override
-  public ${pascalName}VO add(${pascalName}DTO dto) {
-    ${pascalName} ${camelName}= ${camelName}Repository.save(${camelName}Struct.dtoToModel(dto));
-    return ${camelName}Struct.modelToVO(${camelName});
-  }
+    @Override
+    public List<${pascalName}VO> queryList(${pascalName}DTO dto) {
+      List<${pascalName}> ${camelName}s = SpecificationBuilder.create(${pascalName}Repository.class)
+          .select();
+      return ${camelName}Struct.modelToVO(${camelName}s);
+    }
 
-  @Override
-  public ${pascalName}VO edit(${pascalName}DTO dto) {
-    ${pascalName} ${camelName}= ${camelName}Repository.save(${camelName}Struct.dtoToModel(dto));
-    return ${camelName}Struct.modelToVO(${camelName});
-  }
+    @Override
+    public ${pascalName}VO get(Long id) {
+      Optional<${pascalName}> ${camelName}Optional = ${camelName}Repository.findById(id);
+          if (${camelName}Optional.isPresent()) {
+          return ${camelName}Struct.modelToVO(${camelName}Optional.get());
+      }
+      return null;
+    }
 
-  @Override
-  public void delete(Long id) {
-     ${camelName}Repository.deleteById(id);
-  }
+    @Override
+    public ${pascalName}VO add(${pascalName}DTO dto) {
+      ${pascalName} ${camelName}= ${camelName}Repository.save(${camelName}Struct.dtoToModel(dto));
+      return ${camelName}Struct.modelToVO(${camelName});
+    }
+
+    @Override
+    public ${pascalName}VO edit(${pascalName}DTO dto) {
+      ${pascalName} ${camelName}= ${camelName}Repository.save(${camelName}Struct.dtoToModel(dto));
+      return ${camelName}Struct.modelToVO(${camelName});
+    }
+
+    @Override
+    public void delete(Long id) {
+       ${camelName}Repository.deleteById(id);
+    }
 }

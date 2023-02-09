@@ -7,6 +7,7 @@ import lombok.Data;
  */
 @Data
 public class Column {
+
     /**
      * 是否是主键
      */

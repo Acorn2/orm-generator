@@ -35,40 +35,40 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @AllArgsConstructor
 public class BaseDomain implements Serializable {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @Schema(name = "创建人代码")
-  @CreatedBy
-  @Column(name = "create_user_code")
-  private String createUserCode;
+    @Schema(name = "创建人代码")
+    @CreatedBy
+    @Column(name = "create_user_code")
+    private String createUserCode;
 
-  @Schema(name = "创建人姓名")
-  @Column(name = "create_user_name")
-  private String createUserName;
+    @Schema(name = "创建人姓名")
+    @Column(name = "create_user_name")
+    private String createUserName;
 
-  @CreatedDate
-  private LocalDateTime createdDate;
+    @CreatedDate
+    private LocalDateTime createdDate;
 
-  @Schema(name = "修改人代码")
-  @LastModifiedBy
-  @Column(name = "last_modified_code")
-  private String lastModifiedCode;
+    @Schema(name = "修改人代码")
+    @LastModifiedBy
+    @Column(name = "last_modified_code")
+    private String lastModifiedCode;
 
-  @Schema(name = "修改人姓名")
-  @Column(name = "last_modified_name")
-  private String lastModifiedName;
+    @Schema(name = "修改人姓名")
+    @Column(name = "last_modified_name")
+    private String lastModifiedName;
 
-  @LastModifiedDate
-  private LocalDateTime lastModifiedDate;
+    @LastModifiedDate
+    private LocalDateTime lastModifiedDate;
 
-  @Schema(name = "")
-  @Column(name = "del_flag")
-  private Integer delFlag;
+    @Schema(name = "")
+    @Column(name = "del_flag")
+    private Integer delFlag;
 
-  @Schema(name = "版本号")
-  @Version
-  @Column(name = "version")
-  private Integer version;
+    @Schema(name = "版本号")
+    @Version
+    @Column(name = "version")
+    private Integer version;
 }

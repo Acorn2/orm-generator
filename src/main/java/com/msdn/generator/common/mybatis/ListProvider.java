@@ -49,8 +49,12 @@ public class ListProvider extends MapperTemplate {
         //开始拼sql
         StringBuilder sql = new StringBuilder();
         List<EntityColumn> pkColumns = new ArrayList<>(EntityHelper.getPKColumns(entityClass));
-        sql.append("<bind name=\"listNotEmptyCheck\" value=\"@tk.mybatis.mapper.util.OGNL@notEmptyCollectionCheck(list, '" + ms.getId() + " 方法参数为空')\"/>");
-        sql.append("<bind name=\"fillIdProcess\" value=\"@com.zhifeng.common.mybatis.ListProvider@fillId(list, '" + pkColumns.get(0).getProperty() + "')\"/>");
+        sql.append(
+                "<bind name=\"listNotEmptyCheck\" value=\"@tk.mybatis.mapper.util.OGNL@notEmptyCollectionCheck(list, '"
+                        + ms.getId() + " 方法参数为空')\"/>");
+        sql.append(
+                "<bind name=\"fillIdProcess\" value=\"@com.zhifeng.common.mybatis.ListProvider@fillId(list, '"
+                        + pkColumns.get(0).getProperty() + "')\"/>");
         sql.append(SqlHelper.insertIntoTable(entityClass, tableName(entityClass), "list[0]"));
         sql.append(SqlHelper.insertColumns(entityClass, false, false, false));
         sql.append(" VALUES ");
@@ -90,23 +94,25 @@ public class ListProvider extends MapperTemplate {
         StringBuilder idSql = new StringBuilder();
 
         //拼装主键
-        for(int i=0;i<pkColumns.size();i++) {
+        for (int i = 0; i < pkColumns.size(); i++) {
             EntityColumn entityColumn = pkColumns.get(i);
-            if(i>0){
+            if (i > 0) {
                 idSql.append(" and ");
             }
             idSql.append(entityColumn.getColumn()).
-                    append("=#{i.").append(entityColumn.getEntityField().getName()+"}");
+                    append("=#{i.").append(entityColumn.getEntityField().getName() + "}");
         }
 
         //获取全部列
         Set<EntityColumn> columnList = EntityHelper.getColumns(entityClass);
         for (EntityColumn column : columnList) {
             if (!column.isId() && column.isUpdatable()) {
-                sql.append("  <trim prefix=\""+column.getColumn()+" =case\" suffix=\"end,\">");
+                sql.append("  <trim prefix=\"" + column.getColumn() + " =case\" suffix=\"end,\">");
                 sql.append("    <foreach collection=\"list\" item=\"i\" index=\"index\">");
-                sql.append("      <if test=\"i."+column.getEntityField().getName()+"!=null\">");
-                sql.append("         when "+idSql.toString()+" then #{i."+column.getEntityField().getName()+"}");
+                sql.append("      <if test=\"i." + column.getEntityField().getName() + "!=null\">");
+                sql.append(
+                        "         when " + idSql.toString() + " then #{i." + column.getEntityField()
+                                .getName() + "}");
                 sql.append("      </if>");
                 sql.append("    </foreach>");
                 sql.append("  </trim>");
@@ -115,21 +121,23 @@ public class ListProvider extends MapperTemplate {
 
         sql.append("</trim>");
         sql.append("WHERE ");
-        for(int i=0;i<pkColumns.size();i++) {
+        for (int i = 0; i < pkColumns.size(); i++) {
             EntityColumn entityColumn = pkColumns.get(i);
-            if(i>0){
+            if (i > 0) {
                 sql.append(" and ");
             }
-            sql.append(entityColumn.getColumn() +" IN ");
+            sql.append(entityColumn.getColumn() + " IN ");
             sql.append("<trim prefix=\"(\" suffix=\")\">");
-            sql.append("<foreach collection=\"list\" separator=\", \" item=\"i\" index=\"index\" >");
-            sql.append("#{i."+entityColumn.getEntityField().getName()+"}");
+            sql.append(
+                    "<foreach collection=\"list\" separator=\", \" item=\"i\" index=\"index\" >");
+            sql.append("#{i." + entityColumn.getEntityField().getName() + "}");
             sql.append("</foreach>");
             sql.append("</trim>");
         }
 
         return sql.toString();
     }
+
     /**
      * 根据主键字符串进行删除，类中只有存在一个带有@Id注解的字段
      *
@@ -193,7 +201,8 @@ public class ListProvider extends MapperTemplate {
         Set<EntityColumn> columnList = EntityHelper.getPKColumns(entityClass);
         if (columnList.size() == 1) {
             EntityColumn column = columnList.iterator().next();
-            sql.append("<bind name=\"_idList\" value=\"@com.zhifeng.common.mybatis.ListProvider@notEmpty(idList)\"/>");
+            sql.append(
+                    "<bind name=\"_idList\" value=\"@com.zhifeng.common.mybatis.ListProvider@notEmpty(idList)\"/>");
             sql.append("<where>");
             sql.append("<foreach collection=\"_idList\" item=\"id\" separator=\",\" open=\"");
             sql.append(column.getColumn());
@@ -203,7 +212,8 @@ public class ListProvider extends MapperTemplate {
             sql.append("</foreach>");
             sql.append("</where>");
         } else {
-            throw new MapperException("继承 ByIdList 方法的实体类[" + entityClass.getCanonicalName() + "]中必须只有一个带有 @Id 注解的字段");
+            throw new MapperException("继承 ByIdList 方法的实体类[" + entityClass.getCanonicalName()
+                    + "]中必须只有一个带有 @Id 注解的字段");
         }
     }
 }

@@ -19,38 +19,38 @@ import org.springframework.stereotype.Service;
 public class ${pascalName}ServiceImpl extends
     ServiceImpl<${pascalName}Mapper, ${pascalName}> implements ${pascalName}Service {
 
-  private final ${pascalName}Struct ${camelName}Struct;
+    private final ${pascalName}Struct ${camelName}Struct;
 
-  @Override
-  public IPage<${pascalName}VO> queryPage(${pascalName}QueryPageDTO dto) {
-    IPage<${pascalName}VO> ${camelName}Page = this.lambdaQuery().page(dto)
-        .convert(${camelName} -> ${camelName}Struct.modelToVO(${camelName}));
-    return ${camelName}Page;
-  }
+    @Override
+    public IPage<${pascalName}VO> queryPage(${pascalName}QueryPageDTO dto) {
+      IPage<${pascalName}VO> ${camelName}Page = this.lambdaQuery().page(dto)
+          .convert(${camelName} -> ${camelName}Struct.modelToVO(${camelName}));
+      return ${camelName}Page;
+    }
 
-  @Override
-  public List<${pascalName}VO> queryList(${pascalName}DTO dto) {
-    List<${pascalName}> ${camelName}List = this.lambdaQuery().list();
-    return ${camelName}Struct.modelToVO(${camelName}List);
-  }
+    @Override
+    public List<${pascalName}VO> queryList(${pascalName}DTO dto) {
+      List<${pascalName}> ${camelName}List = this.lambdaQuery().list();
+      return ${camelName}Struct.modelToVO(${camelName}List);
+    }
 
-  @Override
-  public ${pascalName}VO get(Long id) {
-    return ${camelName}Struct.modelToVO(this.getById(id));
-  }
+    @Override
+    public ${pascalName}VO get(Long id) {
+      return ${camelName}Struct.modelToVO(this.getById(id));
+    }
 
-  @Override
-  public Boolean add(${pascalName}DTO dto) {
-    return this.save(${camelName}Struct.dtoToModel(dto));
-  }
+    @Override
+    public boolean add(${pascalName}DTO dto) {
+      return this.save(${camelName}Struct.dtoToModel(dto));
+    }
 
-  @Override
-  public Boolean edit(${pascalName}DTO dto) {
-    return this.updateById(${camelName}Struct.dtoToModel(dto));
-  }
+    @Override
+    public boolean edit(${pascalName}DTO dto) {
+      return this.updateById(${camelName}Struct.dtoToModel(dto));
+    }
 
-  @Override
-  public Boolean delete(String id) {
-    return this.removeById(id);
-  }
+    @Override
+    public boolean delete(String id) {
+      return this.removeById(id);
+    }
 }

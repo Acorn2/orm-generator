@@ -32,50 +32,50 @@ import tk.mybatis.mapper.annotation.Version;
 @SuperBuilder(toBuilder = true)
 public class BaseEntity implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  @Id
-  @KeySql(genId = IdUtils.class)
-  @Schema(name = "")
-  private String id;
+    @Id
+    @KeySql(genId = IdUtils.class)
+    @Schema(name = "")
+    private String id;
 
-  @Schema(description = "删除标记")
-  @LogicDelete
-  @Column(name = "del_flag")
-  private Boolean delFlag;
+    @Schema(description = "删除标记")
+    @LogicDelete
+    @Column(name = "del_flag")
+    private Boolean delFlag;
 
-  @Schema(description = "创建人代码")
-  @CreatedBy
-  @Column(name = "create_user_code")
-  private String createUserCode;
+    @Schema(description = "创建人代码")
+    @CreatedBy
+    @Column(name = "create_user_code")
+    private String createUserCode;
 
-  @Schema(name = "创建人姓名")
-  @CreatedName
-  @Column(name = "create_user_name")
-  private String createUserName;
+    @Schema(name = "创建人姓名")
+    @CreatedName
+    @Column(name = "create_user_name")
+    private String createUserName;
 
-  @Schema(name = "创建时间")
-  @CreatedDate
-  @Column(name = "created_date")
-  private LocalDateTime createdDate;
+    @Schema(name = "创建时间")
+    @CreatedDate
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
 
-  @Schema(name = "修改人代码")
-  @LastModifiedBy
-  @Column(name = "last_modified_code")
-  private String lastModifiedCode;
+    @Schema(name = "修改人代码")
+    @LastModifiedBy
+    @Column(name = "last_modified_code")
+    private String lastModifiedCode;
 
-  @Schema(name = "修改人姓名")
-  @LastModifiedName
-  @Column(name = "last_modified_name")
-  private String lastModifiedName;
+    @Schema(name = "修改人姓名")
+    @LastModifiedName
+    @Column(name = "last_modified_name")
+    private String lastModifiedName;
 
-  @Schema(name = "修改时间")
-  @LastModifiedDate
-  @Column(name = "last_modified_date")
-  private LocalDateTime lastModifiedDate;
+    @Schema(name = "修改时间")
+    @LastModifiedDate
+    @Column(name = "last_modified_date")
+    private LocalDateTime lastModifiedDate;
 
-  @Schema(name = "版本号")
-  @Version
-  @Column(name = "version")
-  private Integer version;
+    @Schema(name = "版本号")
+    @Version
+    @Column(name = "version")
+    private Integer version;
 }

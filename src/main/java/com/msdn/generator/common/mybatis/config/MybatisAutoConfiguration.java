@@ -10,8 +10,7 @@ import javax.annotation.PostConstruct;
 
 /**
  * @博客 https://juejin.cn/user/2664871918047063
- * @网站 https://www.hreshhao.com/
- * mybatis 配置类
+ * @网站 https://www.hreshhao.com/ mybatis 配置类
  */
 @Configuration
 @ConditionalOnBean({SqlSessionFactory.class})

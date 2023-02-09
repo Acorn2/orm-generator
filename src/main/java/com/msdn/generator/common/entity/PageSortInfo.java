@@ -19,19 +19,19 @@ import org.springframework.util.CollectionUtils;
 @EqualsAndHashCode(callSuper = true)
 public class PageSortInfo extends SimplePageInfo {
 
-  @Schema(name = "排序信息")
-  private List<OrderInfo> orderInfos;
+    @Schema(name = "排序信息")
+    private List<OrderInfo> orderInfos;
 
-  public String parseSort() {
-    if (CollectionUtils.isEmpty(orderInfos)) {
-      return null;
+    public String parseSort() {
+        if (CollectionUtils.isEmpty(orderInfos)) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (OrderInfo orderInfo : orderInfos) {
+            sb.append(orderInfo.getColumn()).append(" ");
+            sb.append(orderInfo.isAsc() ? " ASC," : " DESC,");
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        return sb.toString();
     }
-    StringBuilder sb = new StringBuilder();
-    for (OrderInfo orderInfo : orderInfos) {
-      sb.append(orderInfo.getColumn()).append(" ");
-      sb.append(orderInfo.isAsc() ? " ASC," : " DESC,");
-    }
-    sb.deleteCharAt(sb.length() - 1);
-    return sb.toString();
-  }
 }

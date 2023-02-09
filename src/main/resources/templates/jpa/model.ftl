@@ -28,9 +28,9 @@ public class ${pascalName} extends BaseDomain {
 <#if column.isPrimaryKey>
 </#if>
 <#if !column.isCommonField>
-  @Schema(name = "${column.comment}")
-  @Column(name = "${column.fieldName}")
-  private ${column.javaType} ${column.camelName};
+    @Schema(name = "${column.comment}")
+    @Column(name = "${column.fieldName}")
+    private ${column.javaType} ${column.camelName};
 
 </#if>
 </#list>

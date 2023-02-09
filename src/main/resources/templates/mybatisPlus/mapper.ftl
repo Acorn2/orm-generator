@@ -2,9 +2,9 @@ package ${package}.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import ${package}.model.${pascalName};
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 
-@Repository
+@Mapper
 public interface ${pascalName}Mapper extends BaseMapper<${pascalName}> {
 
 }

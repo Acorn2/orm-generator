@@ -13,8 +13,8 @@ public class ${pascalName}DTO {
 
 <#list columns as column>
 <#if !column.isCommonField>
-  @Schema(name = "${column.comment}")
-  private ${column.javaType} ${column.camelName};
+    @Schema(name = "${column.comment}")
+    private ${column.javaType} ${column.camelName};
 
     </#if>
 </#list>

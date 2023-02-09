@@ -17,14 +17,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringDocConfig {
 
-  @Bean
-  public OpenAPI openApi() {
-    return new OpenAPI()
-        .info(new Info().title("ORM-Generate API")
-            .version("v1.0.0")
-            .license(new License().name("Apache 2.0").url("https://www.hreshhao.com")))
-        .externalDocs(new ExternalDocumentation()
-            .description("生成不同的ORM框架对应的基础模版代码")
-            .url("https://www.hreshhao.com"));
-  }
+    @Bean
+    public OpenAPI openApi() {
+        return new OpenAPI()
+                .info(new Info().title("ORM-Generate API")
+                        .version("v1.0.0")
+                        .license(new License().name("Apache 2.0").url("https://www.hreshhao.com")))
+                .externalDocs(new ExternalDocumentation()
+                        .description("生成不同的ORM框架对应的基础模版代码")
+                        .url("https://www.hreshhao.com"));
+    }
 }

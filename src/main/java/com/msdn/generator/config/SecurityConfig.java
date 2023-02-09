@@ -16,15 +16,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().disable().authorizeRequests().antMatchers("/").permitAll();
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable().authorizeRequests().antMatchers("/").permitAll();
 
-    // 或者仅放行swagger相关的接口
+        // 或者仅放行swagger相关的接口
 //    http.csrf().disable().authorizeRequests()
 //        .antMatchers("/swagger-ui.html").permitAll()
 //        .antMatchers("/wabjars/**").permitAll()
 //        .antMatchers("/swagger-resources/**").permitAll()
 //        .antMatchers("/v3/**").permitAll();
-  }
+    }
 }

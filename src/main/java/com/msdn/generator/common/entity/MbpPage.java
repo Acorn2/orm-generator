@@ -15,6 +15,7 @@ import java.util.List;
  * @description Mybatis Plus分页封装接口
  */
 public class MbpPage<T> implements IPage<T> {
+
     private List<T> records;
     private long total;
     private long pageSize;
