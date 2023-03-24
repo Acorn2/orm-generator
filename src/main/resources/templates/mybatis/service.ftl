@@ -1,29 +1,50 @@
 package ${package}.service;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import ${package}.dto.${pascalName}DTO;
 import ${package}.dto.${pascalName}QueryPageDTO;
+import ${package}.mapper.${pascalName}Mapper;
+import ${package}.model.${pascalName};
+import ${package}.service.${pascalName}Service;
 import ${package}.vo.${pascalName}VO;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface ${pascalName}Service {
+@Service
+@RequiredArgsConstructor
+public class ${pascalName}Service {
 
-    // 获取${tableComment}分页列表
-    Page<${pascalName}VO> queryPage(${pascalName}QueryPageDTO dto);
+    private final ${pascalName}Mapper ${camelName}Mapper;
+    private final ${pascalName}Struct ${camelName}Struct;
 
-    // 获取${tableComment}列表
-    List<${pascalName}VO> queryList(${pascalName}DTO dto);
+    public Page<${pascalName}VO> queryPage(${pascalName}QueryPageDTO dto) {
+      ${pascalName} ${camelName} = ${camelName}Struct.dtoToModel(dto);
+      PageHelper.startPage(dto.getPageSortInfo().getPageNum(), dto.getPageSortInfo().getPageSize(), dto.getPageSortInfo().parseSort());
+      Page<${pascalName}> ${camelName}Page = (Page<${pascalName}>) ${camelName}Mapper.select(${camelName});
+      return PageUtils.convert(${camelName}Page, ${pascalName}VO.class);
+    }
 
-    // 获取${tableComment}详情
-    ${pascalName}VO get(Long id);
+    public List<${pascalName}VO> queryList(${pascalName}DTO dto) {
+      ${pascalName} ${camelName} = ${camelName}Struct.dtoToModel(dto);
+      return ${camelName}Struct.modelToVO(${camelName}Mapper.select(${camelName}));
+    }
 
-    // 新增${tableComment}
-    int add(${pascalName}DTO dto);
+    public ${pascalName}VO get(Long id) {
+      return ${camelName}Struct.modelToVO(${camelName}Mapper.selectByPrimaryKey(id));
+    }
 
-    // 编辑${tableComment}
-    int edit(${pascalName}DTO dto);
+    public int add(${pascalName}DTO dto) {
+      return ${camelName}Mapper.insertSelective(${camelName}Struct.dtoToModel(dto));
+    }
 
-    // 删除${tableComment}
-    int delete(String id);
+    public int edit(${pascalName}DTO dto) {
+      return ${camelName}Mapper.updateByPrimaryKeySelective(${camelName}Struct.dtoToModel(dto));
+    }
+
+    public int delete(String id) {
+      return ${camelName}Mapper.deleteByPrimaryKey(id);
+    }
 }

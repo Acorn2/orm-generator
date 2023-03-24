@@ -22,51 +22,52 @@ import java.util.List;
 @Parameters(commandDescription = "使用帮助")
 public class GenerateParameter {
 
-    @Schema(name = "mysql主机名")
+    @Schema(name = "host",title = "mysql主机名")
     @Parameter(names = {"--host", "-h"}, description = "mysql主机名")
     private String host;
 
-    @Schema(name = "mysql端口")
+    @Schema(name = "port",title = "mysql端口")
     @Parameter(names = {"--port", "-P"}, description = "mysql端口")
     private Integer port;
 
-    @Schema(name = "mysql用户名")
+    @Schema(name = "username",title = "mysql用户名")
     @Parameter(names = {"--username", "-u"}, description = "mysql用户名")
     private String username;
 
-    @Schema(name = "mysql密码")
+    @Schema(name = "password",title = "mysql密码")
     @Parameter(names = {"--password", "-p"}, description = "mysql密码")
     private String password;
 
-    @Schema(name = "mysql数据库名")
+    @Schema(name = "database",title = "mysql数据库名")
     @Parameter(names = {"--database", "-d"}, description = "mysql数据库名")
     private String database;
 
-    @Schema(name = "mysql数据库表")
+    @Schema(name = "table",title = "mysql数据库表")
     @Parameter(names = {"--table", "-t"}, description = "mysql数据库表")
     private List<String> table;
 
-    @Schema(name = "业务模块名")
+    @Schema(name = "module",title = "业务模块名")
     @Parameter(names = {"--module", "-m"}, description = "业务模块名")
     private String module;
 
-    @Schema(name = "业务分组，目前是base和business")
+    @Schema(name = "group",title = "业务分组，目前是base和business")
     @Parameter(names = {"--group", "-g"}, description = "业务分组，目前是base和business")
     private String group;
 
-    @Schema(name = "是否按表名分隔目录")
+    @Schema(name = "flat",title = "是否按表名分隔目录")
     @Parameter(names = {"--flat"}, description = "是否按表名分隔目录")
     private boolean flat;
 
-    @Schema(name = "orm框架选择")
+    @Schema(name = "type",title = "orm框架选择")
     @Parameter(names = {"--type"}, description = "orm框架选择")
     private String type;
 
-    @Schema(name = "查看帮助")
+    @Schema(name = "help",title = "查看帮助")
     @Parameter(names = "--help", help = true, description = "查看帮助")
     private boolean help;
 
-    @Schema(name = "表名截取起始索引，比如表名叫做t_sale_contract_detail，生成的实体类为ContractDetail，则该字段为7")
+    // 表名截取起始索引，比如表名叫做t_sale_contract_detail，生成的实体类为ContractDetail，则该字段为7
+    @Schema(name = "tableStartIndex",title = "表名截取起始索引")
     @Parameter(names = {"--tableStartIndex", "-tsi"}, description = "表名截取起始索引")
     private String tableStartIndex;
 }

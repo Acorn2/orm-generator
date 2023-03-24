@@ -160,11 +160,6 @@ public class GenerateService extends BaseService {
                         + "Service.java";
         freemarkerService.write("service", dataModel, path, generateParameter);
 
-        path =
-                "java" + File.separator + "service" + File.separator + "impl" + File.separator
-                        + dataModel
-                        .get("pascalName") + "ServiceImpl.java";
-        freemarkerService.write("service-impl", dataModel, path, generateParameter);
     }
 
     private void generateVO(Map<String, Object> dataModel, GenerateParameter generateParameter)

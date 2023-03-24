@@ -1,28 +1,50 @@
 package ${package}.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import ${package}.dto.${pascalName}DTO;
 import ${package}.dto.${pascalName}QueryPageDTO;
+import ${package}.mapper.${pascalName}Mapper;
+import ${package}.model.${pascalName};
+import ${package}.service.${pascalName}Service;
+import ${package}.struct.${pascalName}Struct;
 import ${package}.vo.${pascalName}VO;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-public interface ${pascalName}Service {
 
-    // 获取${tableComment}分页列表
-    IPage<${pascalName}VO> queryPage(${pascalName}QueryPageDTO dto);
+@Service
+@RequiredArgsConstructor
+public class ${pascalName}Service extends
+    ServiceImpl<${pascalName}Mapper, ${pascalName}> {
 
-    // 获取${tableComment}列表
-    List<${pascalName}VO> queryList(${pascalName}DTO dto);
+    private final ${pascalName}Struct ${camelName}Struct;
 
-    // 获取${tableComment}详情
-    ${pascalName}VO get(Long id);
+    public IPage<${pascalName}VO> queryPage(${pascalName}QueryPageDTO dto) {
+      IPage<${pascalName}VO> ${camelName}Page = this.lambdaQuery().page(dto)
+          .convert(${camelName} -> ${camelName}Struct.modelToVO(${camelName}));
+      return ${camelName}Page;
+    }
 
-    // 新增${tableComment}
-    boolean add(${pascalName}DTO dto);
+    public List<${pascalName}VO> queryList(${pascalName}DTO dto) {
+      List<${pascalName}> ${camelName}List = this.lambdaQuery().list();
+      return ${camelName}Struct.modelToVO(${camelName}List);
+    }
 
-    // 编辑${tableComment}
-    boolean edit(${pascalName}DTO dto);
+    public ${pascalName}VO get(Long id) {
+      return ${camelName}Struct.modelToVO(this.getById(id));
+    }
 
-    // 删除${tableComment}
-    boolean delete(String id);
+    public boolean add(${pascalName}DTO dto) {
+      return this.save(${camelName}Struct.dtoToModel(dto));
+    }
+
+    public boolean edit(${pascalName}DTO dto) {
+      return this.updateById(${camelName}Struct.dtoToModel(dto));
+    }
+
+    public boolean delete(String id) {
+      return this.removeById(id);
+    }
 }
